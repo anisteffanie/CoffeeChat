@@ -13,6 +13,11 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../client'));
 
+app.post('/api/signup', function(req, res){
+	console.log(req.body);
+}) 
+
+
 http.listen(port, function() {
   console.log('Listening on port ' + port);
 });

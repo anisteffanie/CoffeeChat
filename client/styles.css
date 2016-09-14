@@ -1,0 +1,98 @@
+/*
+/* RESET */
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, 
+section, summary {
+	display: block;
+}
+
+html, body, div, section, article, main, aside, header, hgroup, footer, nav, h1, h2, h3, h4,
+h5, h6, p, blockquote, address, time, span, em, strong, img, ol, ul, li, figure, canvas, 
+video, th, td, tr {
+	margin: 0;
+	padding: 0;
+	border: 0; 
+	vertical-align: baseline; 
+	font: inherit;
+}
+
+
+/* GENERAL STYLES */
+html, body {
+	height: 100%;
+}
+
+/* LANDING PAGE STYLES */
+.landingPage {
+	background: url('assets/coffee.jpg')  no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+}
+
+
+.box {
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+  width: 25%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.3);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 33%;
+}
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #008060;
+  border: 2px solid #00cc99;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  margin: 10px 20px;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #00cc99;
+  color: #fff;
+}
+
+.signupForm {
+  position: absolute;
+  left: 33%;
+  top: 10%;
+  width: 30%;
+  height: 60%;
+}
+.signupForm input {
+  width: 80%;
+  height: 10%;
+  font-size: 20px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  padding-left: 10px;
+  background: rgba(255,255,255,0.8);
+  margin-bottom: 3%;
+
+}
+
+.signupForm input:focus {
+  outline: none;
+}
+.signupForm label, .signupForm legend {
+  font-weight: bold;
+}
+.signupForm legend {
+  text-align: center;
+}
+

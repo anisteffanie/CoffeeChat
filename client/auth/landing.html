@@ -1,1 +1,31 @@
-<div>landing</div>
+<div class='landingPage'>
+<section>
+
+<div class="box" ng-show="signNav">
+	<a class="button" ng-click=""> SIGN IN </a>
+	<a class="button" ng-click="showSignupBox()"> SIGN UP </a>
+</div>
+
+<form class="signupForm box" ng-show="signupBox">
+	
+  	<label>FIRST NAME</label><br>
+  	<input type="text" ng-model="firstName"><br>
+  	
+  	<label>LAST NAME</label><br>
+  	<input type="text" ng-model="lastName"><br>
+  	
+  	<label> USERNAME</label><br>
+  	<input type="text" ng-model="signupUsername"><br>
+  	
+  	<label>PASSWORD</label><br>
+  	<input type="password" ng-model="signupPassword"><br>
+  	
+  	<label>FAVORITE COFFEE</label><br>
+  	<input type="text" ng-model="favCoffee"><br>
+  	
+  	<button class="button" ng-click="userSignup()">SIGNUP</button>
+  	<button class="button" ng-click = "hideSignupBox()">CANCEL</button>
+</form>
+
+</section>
+</div>

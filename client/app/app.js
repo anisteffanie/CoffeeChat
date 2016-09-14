@@ -1,4 +1,4 @@
-angular.module('Coffeechat', ['Coffeechat.landing', 'Coffeechat.signup', 'Coffeechat.signin', 'Coffeechat.dashboard', 'Coffeechat.services', 'ui.router'])
+angular.module('Coffeechat', ['Coffeechat.landing', 'Coffeechat.signup', 'Coffeechat.signin', 'Coffeechat.dashboard', 'Coffeechat.services', 'ui.router', 'ngMaterial', 'angularModalService', 'ngMessages'])
 .run(function(){
 	
 })
