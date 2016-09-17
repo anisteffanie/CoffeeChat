@@ -4,9 +4,12 @@ angular.module('Coffeechat.services', [])
 		return $http.post('/api/signup', userInfo);
    };
 
-	var userSignin = function(){};
+	var userSignin = function(userInfo){
+		return $http.post('/api/signin', userInfo);
+	};
 	
 	return {
-		userSignup: userSignup
+		userSignup: userSignup,
+		userSignin: userSignin
 	}
 })

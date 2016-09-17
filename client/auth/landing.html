@@ -2,13 +2,13 @@
 <section>
 
 <div class="box" ng-show="signNav">
-	<a class="button" ng-click=""> SIGN IN </a>
+	<a class="button" ng-click="showSigninBox()"> SIGN IN </a>
 	<a class="button" ng-click="showSignupBox()"> SIGN UP </a>
 </div>
 
+<!--signup form -->
 <form class="signupForm box" ng-show="signupBox">
-	
-  	<label>FIRST NAME</label><br>
+    <label>FIRST NAME</label><br>
   	<input type="text" ng-model="firstName"><br>
   	
   	<label>LAST NAME</label><br>
@@ -26,6 +26,20 @@
   	<button class="button" ng-click="userSignup()">SIGNUP</button>
   	<button class="button" ng-click = "hideSignupBox()">CANCEL</button>
 </form>
+<!-- end of signup form -->
+
+<!--signin form -->
+<form class="signinForm box" ng-show="signinBox">
+    <label>USERNAME</label><br>
+    <input type="text" ng-model="signinUsername"><br>
+    
+    <label>PASSWORD</label><br>
+    <input type="text" ng-model="signinPassword"><br>
+    
+    <button class="button" ng-click="userSignin()">SIGNIN</button>
+    <button class="button" ng-click = "hideSigninBox()">CANCEL</button>
+</form>
+<!--end of signin form -->
 
 </section>
 </div>
