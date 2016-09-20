@@ -8,17 +8,20 @@
 
 <!--signup form -->
 <form class="signupForm box" ng-show="signupBox">
+  <div class='signupError'>
+    <p ng-model="signupError">{{signupError}}</p>
+  </div>
     <label>FIRST NAME</label><br>
-  	<input type="text" ng-model="firstName"><br>
+  	<input type="text" ng-model="firstName"  id = 'fn' class="input firstname error" ng-keypress = "clearError()"><br>
   	
   	<label>LAST NAME</label><br>
-  	<input type="text" ng-model="lastName"><br>
+  	<input type="text" ng-model="lastName" class="input lastname error" ng-keypress="clearError()"><br>
   	
   	<label> USERNAME</label><br>
-  	<input type="text" ng-model="signupUsername"><br>
+  	<input type="text" ng-model="signupUsername" class="input signupUsername error" ng-keypress="clearError()"><br>
   	
   	<label>PASSWORD</label><br>
-  	<input type="password" ng-model="signupPassword"><br>
+  	<input type="password" ng-model="signupPassword" class="input signupPassword error" ng-keypress="clearError()"><br>
   	
   	<label>FAVORITE COFFEE</label><br>
   	<input type="text" ng-model="favCoffee"><br>
@@ -34,7 +37,7 @@
     <input type="text" ng-model="signinUsername"><br>
     
     <label>PASSWORD</label><br>
-    <input type="text" ng-model="signinPassword"><br>
+    <input type="password" ng-model="signinPassword"><br>
     
     <button class="button" ng-click="userSignin()">SIGNIN</button>
     <button class="button" ng-click = "hideSigninBox()">CANCEL</button>

@@ -108,4 +108,18 @@ html, body {
 .signupForm legend, .signinForm legend {
   text-align: center;
 }
+div.signupError {
+  color: red;
+  display: block;
+  height: 18px;
+  position: absolute;
+  left: 3%;
+  top: 1%;
+}
+
+input.inputError {
+  
+  border: 2px solid red;
+ 
+}
 

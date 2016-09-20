@@ -21,11 +21,34 @@ angular.module('Coffeechat.landing', [])
  			password: $scope.signupPassword,
  			favoriteCoffee: $scope.favCoffee
  		};
- 		authFactory.userSignup(newUser)
- 		.then(function(data){
- 			console.log(data.data)
- 		});
- 		$scope.hideSignupBox();
+ 		console.log(newUser)
+ 		if($scope.firstName === undefined || $scope.firstName === "") {
+ 			$scope.signupError = 'what\'s your first name?';
+ 			angular.element(document.querySelector('.firstname')).addClass('inputError');
+ 			
+		}
+ 		else if($scope.lastName === undefined || $scope.lastName === ""){
+ 			$scope.signupError = 'what\'s your last name?';
+ 			console.log('lastname ' + $scope.lastName)
+ 			angular.element(document.querySelector('.lastname')).addClass('inputError');
+ 		}
+ 		else if($scope.signupUsername === undefined ||  $scope.signupUsername === ""){
+ 			$scope.signupError = 'please choose a username';
+
+ 			angular.element(document.querySelector('.signupUsername')).addClass('inputError');
+ 		}
+ 		else if($scope.signupPassword === undefined || $scope.signupPassword === ""){
+ 			$scope.signupError = 'please choose a password'; 
+ 			angular.element(document.querySelector('.signupPassword')).addClass('inputError');
+ 		}
+ 		else {
+ 			authFactory.userSignup(newUser)
+ 			.then(function(data){
+ 				$scope.hideSignupBox();
+ 				console.log(data.data);
+ 			});
+ 			
+ 		}
  	};
 
 
@@ -48,5 +71,9 @@ angular.module('Coffeechat.landing', [])
 		})
  	$scope.hideSigninBox();	
  	};
+
+ 	$scope.clearError = function(){
+ 		angular.element(document).find('input').removeClass('inputError')
+ 	}
 
 });
