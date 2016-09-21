@@ -44,8 +44,7 @@ angular.module('Coffeechat.landing', [])
  		else {
  			authFactory.userSignup(newUser)
  			.then(function(data){
- 				$scope.hideSignupBox();
- 				console.log(data.data);
+ 				console.log('data ' + data.data);
  			});
  			
  		}
