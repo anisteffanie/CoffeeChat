@@ -67,6 +67,7 @@ angular.module('Coffeechat.landing', [])
 		};
 		authFactory.userSignin(user).then(function(data){
 			console.log(data.data);
+			$state.go('dashboard');
 		})
  	$scope.hideSigninBox();	
  	};

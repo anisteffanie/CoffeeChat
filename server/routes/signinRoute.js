@@ -15,9 +15,9 @@ router.post('/', function(req, res){
 		}
 		else {
 			if(bcrypt.compareSync(req.body.password, user.passWord)){
-				console.log('hashed password ', + user.passWord);
+				console.log('hashed PWD ' + user.passWord);
 				req.session.user = user; // set cookie
-				res.send('logged in');
+				res.send();
 			}
 			else {
 				console.log('wrong password!!!')
@@ -27,6 +27,8 @@ router.post('/', function(req, res){
 })
 
 module.exports = router; 
+
+
 
 
 

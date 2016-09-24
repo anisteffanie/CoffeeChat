@@ -13,3 +13,12 @@ angular.module('Coffeechat.services', [])
 		userSignin: userSignin
 	}
 })
+.factory('dashboardFactory', function($http){
+	var getUser = function(userInfo){
+		return $http.get('/api/dashboard/getUser');
+	}
+
+	return {
+		getUser: getUser
+	}
+})
