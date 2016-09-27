@@ -12,16 +12,22 @@ angular.module('Coffeechat.landing', [])
  	$scope.hideSignupBox = function(){
 		$scope.signupBox = false;
 		$scope.signNav = true;
+		$scope.firstName = '';
+ 		$scope.lastName = '';
+ 		$scope.signupUsername = '';
+ 		$scope.signupPassword = '';
+ 		$scope.favCoffee = '';
+ 		$scope.signupError = '';
  	};
  	$scope.userSignup = function(){
- 		var newUser = {
+		var newUser = {
  			firstName: $scope.firstName,
  			lastName: $scope.lastName,
  			username: $scope.signupUsername,
  			password: $scope.signupPassword,
  			favoriteCoffee: $scope.favCoffee
  		};
- 		console.log(newUser)
+ 		
  		if($scope.firstName === undefined || $scope.firstName === "") {
  			$scope.signupError = 'what\'s your first name?';
  			angular.element(document.querySelector('.firstname')).addClass('inputError');
@@ -44,10 +50,16 @@ angular.module('Coffeechat.landing', [])
  		else {
  			authFactory.userSignup(newUser)
  			.then(function(data){
- 				console.log('data ' + data.data);
- 			});
+ 				if(data.data === 'Username is taken'){
+ 					angular.element(document.querySelector('.signupUsername')).addClass('inputError');
+ 					$scope.signupError = 'Username "' + $scope.signupUsername + '" is taken. Please try another one.'
+ 				}
+ 				else {
+ 					$scope.hideSignupBox();
+ 				}
+			});
  			
- 		}
+		}
  	};
 
 
@@ -59,21 +71,44 @@ angular.module('Coffeechat.landing', [])
  	$scope.hideSigninBox = function(){
 		$scope.signinBox = false;
 		$scope.signNav = true;
+		$scope.signinUsername = '';
+		$scope.signinPassword = '';
+		$scope.signinError = '';
  	};
  	$scope.userSignin = function(){
  		var user = {
  			username: $scope.signinUsername,
  			password: $scope.signinPassword	
 		};
-		authFactory.userSignin(user).then(function(data){
-			console.log(data.data);
-			$state.go('dashboard');
-		})
- 	$scope.hideSigninBox();	
+		if($scope.signinUsername === undefined || $scope.signinUsername === ""){
+			$scope.signinError = 'Please enter your username';
+			angular.element(document.querySelector('.signinUsername')).addClass('inputError');
+ 		
+		}
+		else if($scope.signinPassword === undefined || $scope.signinPassword === ""){
+			$scope.signinError = 'Please enter your password';
+			angular.element(document.querySelector('.signinPassword')).addClass('inputError');
+		}
+		else {
+			authFactory.userSignin(user).then(function(data){
+				if(data.data === 'user does not exist'){
+					$scope.signinError = 'User "' + $scope.signinUsername + '" does not exist.';
+					angular.element(document.querySelector('.signinUsername')).addClass('inputError');
+				}
+				else if(data.data = 'wrong password'){
+					$scope.signinError = 'Wrong password. Please try again.';
+					angular.element(document.querySelector('.signinPassword')).addClass('inputError');
+				}
+				else {
+					$scope.hideSigninBox();	
+					$state.go('dashboard');
+				}
+			});
+		}
  	};
 
  	$scope.clearError = function(){
- 		angular.element(document).find('input').removeClass('inputError')
+ 		angular.element(document).find('input').removeClass('inputError');
  	}
 
 });

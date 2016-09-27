@@ -1,16 +1,22 @@
 angular.module('Coffeechat.services', [])
 .factory('authFactory', function($http){
 	var userSignup = function(userInfo){
+
 		return $http.post('/api/signup', userInfo);
    };
 
 	var userSignin = function(userInfo){
 		return $http.post('/api/signin', userInfo);
 	};
+
+	var requestCsrf = function(){
+		return $http.get('/api/signup/csrf');
+	}
 	
 	return {
 		userSignup: userSignup,
 		userSignin: userSignin
+		
 	}
 })
 .factory('dashboardFactory', function($http){

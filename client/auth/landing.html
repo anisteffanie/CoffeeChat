@@ -11,6 +11,7 @@
   <div class='signupError'>
     <p ng-model="signupError">{{signupError}}</p>
   </div>
+    <!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> -->
     <label>FIRST NAME</label><br>
   	<input type="text" ng-model="firstName"  id = 'fn' class="input firstname error" ng-keypress = "clearError()"><br>
   	
@@ -26,18 +27,22 @@
   	<label>FAVORITE COFFEE</label><br>
   	<input type="text" ng-model="favCoffee"><br>
   	
-  	<button class="button" ng-click="userSignup(); hideSignupBox()">SIGNUP</button>
+  	<button class="button" ng-click="userSignup()">SIGNUP</button>
   	<button class="button" ng-click = "hideSignupBox()">CANCEL</button>
 </form>
 <!-- end of signup form -->
 
 <!--signin form -->
 <form class="signinForm box" ng-show="signinBox">
+    <div class='signinError'>
+      <p ng-model="signinError">{{signinError}}</p>
+     </div> 
+    <!-- <input type="hidden" name="_csrf" value='{{csrfToken}}'> -->
     <label>USERNAME</label><br>
-    <input type="text" ng-model="signinUsername"><br>
+    <input type="text" ng-model="signinUsername" class="input signinUsername error" ng-keypress="clearError()"><br>
     
     <label>PASSWORD</label><br>
-    <input type="password" ng-model="signinPassword"><br>
+    <input type="password" ng-model="signinPassword" class="input signinPassword error" ng-keypress="clearError()"><br>
     
     <button class="button" ng-click="userSignin()">SIGNIN</button>
     <button class="button" ng-click = "hideSigninBox()">CANCEL</button>

@@ -4,9 +4,14 @@ var newUser = require('../db/db.js');
 var session = require('client-sessions');
 var bcrypt = require('bcryptjs');
 
+
 //the secret key for authenthication is in a separate module and is gitignored
 var secret = require('../db/secret.js');
 
+// router.get('/csrf', function(req, res){
+// 	var genCsrf = { csrfToken: req.csrfToken()};
+// 	res.send(genCsrf);
+// })
 
 router.post('/', function(req, res){
 	var hashedPassword = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
@@ -21,12 +26,12 @@ router.post('/', function(req, res){
 		if(err) {
 			var defaultErrorMessage = 'An error occurred. Please try again.'
 			if(err.code === 11000){
-				defaultErrorMessage = 'The username is taken. Please sign up with another one';
+				defaultErrorMessage = 'Username is taken';
 			}	
 			res.send(defaultErrorMessage);
 		}
 		else {
-			console.log('a new user signed up')
+			res.send('successful signup');
 		}
 	})
 

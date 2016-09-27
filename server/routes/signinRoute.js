@@ -11,7 +11,7 @@ var secret = require('../db/secret.js');
 router.post('/', function(req, res){
 	users.findOne({userName: req.body.username}, function(err, user){
 		if(!user) {
-			console.log('user does not exist');
+			res.send('user does not exist');
 		}
 		else {
 			if(bcrypt.compareSync(req.body.password, user.passWord)){
@@ -20,7 +20,7 @@ router.post('/', function(req, res){
 				res.send();
 			}
 			else {
-				console.log('wrong password!!!')
+				res.send('wrong password');
 			}
 		}
 	})

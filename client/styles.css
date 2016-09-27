@@ -108,7 +108,7 @@ html, body {
 .signupForm legend, .signinForm legend {
   text-align: center;
 }
-div.signupError {
+div.signupError, div.signinError {
   color: red;
   display: block;
   height: 18px;
@@ -118,8 +118,6 @@ div.signupError {
 }
 
 input.inputError {
-  
   border: 2px solid red;
- 
 }
 
