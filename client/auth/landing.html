@@ -27,8 +27,8 @@
   	<label>FAVORITE COFFEE</label><br>
   	<input type="text" ng-model="favCoffee"><br>
   	
-  	<button class="button" ng-click="userSignup()">SIGNUP</button>
-  	<button class="button" ng-click = "hideSignupBox()">CANCEL</button>
+  	<button class="button signupBtn" ng-click="userSignup()">SIGNUP</button>
+  	<button class="button signupCancelBtn" ng-click = "hideSignupBox()">CANCEL</button>
 </form>
 <!-- end of signup form -->
 
@@ -44,8 +44,8 @@
     <label>PASSWORD</label><br>
     <input type="password" ng-model="signinPassword" class="input signinPassword error" ng-keypress="clearError()"><br>
     
-    <button class="button" ng-click="userSignin()">SIGNIN</button>
-    <button class="button" ng-click = "hideSigninBox()">CANCEL</button>
+    <button class="button signinBtn" ng-click="userSignin()">SIGNIN</button>
+    <button class="button signinCancelBtn" ng-click = "hideSigninBox()">CANCEL</button>
 </form>
 <!--end of signin form -->
 

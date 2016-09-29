@@ -12,7 +12,6 @@ router.use(function(req, res, next){
 				req.user.passWord = '';
 				req.session.user = req.user
 				res.locals.user = req.user;
-				
 				req.user = user;
 			}
 			next();
@@ -37,5 +36,17 @@ function requireSignin(req, res, next){
 router.get('/getUser', requireSignin, function(req, res){
 	res.send(res.locals.user);
 });
+
+router.post('/editProfile', function(req, res){
+	var toBeEdited = req.body.tobeEdited;
+	var set = {};
+	set[toBeEdited] = req.body.newValue;
+	console.log('set ' + req.session.user.userName)
+
+	users.findOneAndUpdate({userName: req.session.user.userName}, {$set: set}, {upsert: true}, function(err){
+		console.log(err);
+	})
+	res.send();
+})
 
 module.exports = router;

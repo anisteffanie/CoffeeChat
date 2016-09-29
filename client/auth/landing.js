@@ -25,7 +25,9 @@ angular.module('Coffeechat.landing', [])
  			lastName: $scope.lastName,
  			username: $scope.signupUsername,
  			password: $scope.signupPassword,
- 			favoriteCoffee: $scope.favCoffee
+ 			favoriteCoffee: $scope.favCoffee,
+ 			aboutMe: '',
+ 			rating: 0
  		};
  		
  		if($scope.firstName === undefined || $scope.firstName === "") {
@@ -95,11 +97,13 @@ angular.module('Coffeechat.landing', [])
 					$scope.signinError = 'User "' + $scope.signinUsername + '" does not exist.';
 					angular.element(document.querySelector('.signinUsername')).addClass('inputError');
 				}
-				else if(data.data = 'wrong password'){
+				else if(data.data === 'wrong password'){
 					$scope.signinError = 'Wrong password. Please try again.';
+					console.log(data.data)
 					angular.element(document.querySelector('.signinPassword')).addClass('inputError');
 				}
 				else {
+
 					$scope.hideSigninBox();	
 					$state.go('dashboard');
 				}

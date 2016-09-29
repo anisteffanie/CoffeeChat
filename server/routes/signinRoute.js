@@ -13,16 +13,15 @@ router.post('/', function(req, res){
 		if(!user) {
 			res.send('user does not exist');
 		}
-		else {
-			if(bcrypt.compareSync(req.body.password, user.passWord)){
-				console.log('hashed PWD ' + user.passWord);
+		else if(bcrypt.compareSync(req.body.password, user.passWord)){
 				req.session.user = user; // set cookie
 				res.send();
 			}
-			else {
-				res.send('wrong password');
-			}
+		else {
+			
+			res.send('wrong password');
 		}
+		
 	})
 })
 

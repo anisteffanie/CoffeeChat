@@ -1,1 +1,16 @@
-<div> dashboard </div>
+<div class="dashboardPage">
+<div class="headerBar"> </div> 
+	<aside class='aboutMe'> 
+		<h2> My Profile </h2>
+		<img class='profileImg' src="assets/profpic.jpg">
+		<section class='myInfo'>
+			<h3 class='myName'> {{userInfo.firstName}} {{userInfo.lastName}} </h3>
+			<p class='myUsername'>@{{userInfo.userName}}</p>
+			<p > favorite coffee: <span id="myFavCoffee"> {{userInfo.favoriteCoffee}}  </span><img src="assets/edit_icon.png" class="editIcon" id='editCoffee' ng-click="editProfile('myFavCoffee', 'editCoffee', 'favoriteCoffee')"></p>
+			<p> about me: <span id="aboutMe"> {{userInfo.aboutMe}} </span> <img src="assets/edit_icon.png" class="editIcon" id="editAboutMe" ng-click="editProfile('aboutMe', 'editAboutMe', 'aboutMe')"></p>
+			<p>coffeemate rating</p>
+		</section>	
+	</aside>
+	<section id='myDashboard'> 
+	</section>
+</div>

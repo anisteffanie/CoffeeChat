@@ -19,7 +19,8 @@ var users = new Schema({
 	favoriteCoffee: String,
 	aboutMe: String,
 	havingCoffeeAt: {lat: {type: Number}, lng: {type: Number}},
-	rating: Number
+	rating: Number,
+	profilePic: {data: Buffer, contentType: String }
 })
 
 var User = mongoose.model('users', users);

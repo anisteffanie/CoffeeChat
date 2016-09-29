@@ -24,7 +24,12 @@ angular.module('Coffeechat.services', [])
 		return $http.get('/api/dashboard/getUser');
 	}
 
+	var postEdit = function(editThis){
+		return $http.post('/api/dashboard/editProfile', editThis);
+	}
+	
 	return {
-		getUser: getUser
+		getUser: getUser,
+		postEdit: postEdit
 	}
 })

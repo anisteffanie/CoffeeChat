@@ -15,12 +15,15 @@ var secret = require('../db/secret.js');
 
 router.post('/', function(req, res){
 	var hashedPassword = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+	
 	var user = newUser({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		userName: req.body.username,
 		passWord: hashedPassword,
-		favoriteCoffee: req.body.favoriteCoffee
+		favoriteCoffee: req.body.favoriteCoffee,
+		aboutMe: req.body.aboutMe,
+		rating: req.body.rating
 	})
 	user.save(function(err){
 		if(err) {
@@ -34,7 +37,6 @@ router.post('/', function(req, res){
 			res.send('successful signup');
 		}
 	})
-
-
 }) 
+
 module.exports = router;
