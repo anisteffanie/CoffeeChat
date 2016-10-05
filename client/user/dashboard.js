@@ -1,9 +1,12 @@
 angular.module('Coffeechat.dashboard', [])
-.controller('dashboardCtrl', function($scope, $state, dashboardFactory, $compile){
+.controller('dashboardCtrl', function($scope, $state, dashboardFactory, $compile, Upload, $timeout){
 	$scope.userInfo;
 	$scope.dbEdit;
+	$scope.imggg;
 	dashboardFactory.getUser().then(function(data){
 		$scope.userInfo = data.data;
+		console.log(data.data)
+		$scope.profileImage = $scope.userInfo.profilePic;
 
 	});
 
@@ -44,8 +47,27 @@ angular.module('Coffeechat.dashboard', [])
 			newValue: $scope.edited
 		};
 		dashboardFactory.postEdit(editThis);
+		$state.reload();
 	};
+    
+	// adding a profile pic
+	$scope.uploadImg = function(){
+		var file = document.getElementById('imgFile').files[0];
+		var reader = new FileReader()
+		reader.onloadend = function(e){
+   	 		var data = e.target.result;
+    			var dataObj = {
+    				profilePic: 'profilePic',
+    				file: data
+    			}
+    		dashboardFactory.postPhoto(dataObj).then(function(){
+    			$state.reload();
+    		});
+   		}
+  		reader.readAsDataURL(file);
+	
+	}
+
+
 })
-
-
 

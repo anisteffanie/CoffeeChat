@@ -20,6 +20,7 @@ angular.module('Coffeechat.landing', [])
  		$scope.signupError = '';
  	};
  	$scope.userSignup = function(){
+
 		var newUser = {
  			firstName: $scope.firstName,
  			lastName: $scope.lastName,
@@ -28,6 +29,8 @@ angular.module('Coffeechat.landing', [])
  			favoriteCoffee: $scope.favCoffee,
  			aboutMe: '',
  			rating: 0
+
+ 			
  		};
  		
  		if($scope.firstName === undefined || $scope.firstName === "") {
@@ -57,6 +60,7 @@ angular.module('Coffeechat.landing', [])
  					$scope.signupError = 'Username "' + $scope.signupUsername + '" is taken. Please try another one.'
  				}
  				else {
+ 					console.log(newUser);
  					$scope.hideSignupBox();
  				}
 			});

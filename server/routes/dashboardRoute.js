@@ -1,7 +1,10 @@
 var express = require('express');
+var fs = require('fs')
 var router = express.Router();
 var users = require('../db/db.js');
 var session = require('client-sessions');
+var bodyParser = require('body-parser');
+
 
 //middleware
 router.use(function(req, res, next){
@@ -10,7 +13,7 @@ router.use(function(req, res, next){
 			if(user){
 				req.user = user;
 				req.user.passWord = '';
-				req.session.user = req.user
+				req.session.user = req.user;
 				res.locals.user = req.user;
 				req.user = user;
 			}
@@ -47,6 +50,14 @@ router.post('/editProfile', function(req, res){
 		console.log(err);
 	})
 	res.send();
+})
+
+router.post('/addPhoto', function(req, res){
+	var newPhoto= req.body.profilePic;
+	var set = {};
+	set[newPhoto] = req.body.file;
+	users.findOneAndUpdate({username: req.session.user.username}, {$set: set}, {upsert: true}, function(err){})
+	res.send(); 
 })
 
 module.exports = router;

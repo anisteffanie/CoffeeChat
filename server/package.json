@@ -15,6 +15,7 @@
     "client-sessions": "^0.7.0",
     "csurf": "^1.9.0",
     "express": "^4.14.0",
+    "gridfs-stream": "^1.1.1",
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.1"
   }

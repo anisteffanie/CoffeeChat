@@ -23,7 +23,8 @@ router.post('/', function(req, res){
 		passWord: hashedPassword,
 		favoriteCoffee: req.body.favoriteCoffee,
 		aboutMe: req.body.aboutMe,
-		rating: req.body.rating
+		rating: req.body.rating,
+		profilePic: req.body.profilePic
 	})
 	user.save(function(err){
 		if(err) {
