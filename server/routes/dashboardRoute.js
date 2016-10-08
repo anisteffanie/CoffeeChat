@@ -13,7 +13,7 @@ Grid.mongo = mongoose.mongo;
 //middleware
 router.use(function(req, res, next){
 	if(req.session && req.session.user){
-	users.findOne({userName: req.session.user.userName}, function(err, user){
+		users.findOne({userName: req.session.user.userName}, function(err, user){
 			if(user){
 				req.user = user;
 				req.user.passWord = '';
@@ -45,6 +45,22 @@ router.get('/getUser', requireSignin, function(req, res){
 	res.send(res.locals.user);
 });
 
+router.get('/profilePic', requireSignin, function(req, res){
+	var userImg;
+	var id = req.session.user._id;
+	connection.open('open', function(){
+		console.log('getting the photo');
+		var gfs = Grid(connection.db);
+		var readstream = gfs.createReadStream({
+			filename:  mongoose.Types.ObjectId(req.session.user._id)
+		})
+		readstream.on('data', function(data){
+			var userImg = data;
+			res.send(userImg);
+		})
+	})
+})
+
 router.post('/editProfile', function(req, res){
 	var toBeEdited = req.body.tobeEdited;
 	var set = {};
@@ -58,7 +74,9 @@ router.post('/editProfile', function(req, res){
 
 router.post('/addPhoto', function(req, res){
 	var id = req.session.user._id;
+	fs.writeFileSync('./routes/temp.js', req.body.file)
 	var photoPath = path.join(__dirname,'./temp.js')
+	console.log(photoPath)
 	connection.open('open', function(){
 		console.log('connection open');
 		var gfs = Grid(connection.db);
@@ -70,7 +88,8 @@ router.post('/addPhoto', function(req, res){
 			console.log(file.filename + " writen to db")
 		})
 	})
-		res.send(); 
+		console.log(req.body.file);
+		res.send(req.body.file); 
 }) 
 
 module.exports = router;

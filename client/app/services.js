@@ -23,19 +23,19 @@ angular.module('Coffeechat.services', [])
 	var getUser = function(userInfo){
 		return $http.get('/api/dashboard/getUser');
 	}
-
+	var getProfilePic = function(userInfo){
+		return $http.get('api/dashboard/profilePic');
+	}
 	var postEdit = function(editThis){
 		return $http.post('/api/dashboard/editProfile', editThis);
 	}
 
 	var postProfilePic = function(photo){
 		return $http.post('/api/dashboard/addPhoto', photo);
-
-
-		
 	}
 	return {
 		getUser: getUser,
+		getPhoto: getProfilePic,
 		postEdit: postEdit,
 		postPhoto: postProfilePic
 	}

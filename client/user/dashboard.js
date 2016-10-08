@@ -2,13 +2,15 @@ angular.module('Coffeechat.dashboard', [])
 .controller('dashboardCtrl', function($scope, $state, dashboardFactory, $compile, Upload, $timeout){
 	$scope.userInfo;
 	$scope.dbEdit;
-	$scope.imggg;
+	
 	dashboardFactory.getUser().then(function(data){
 		$scope.userInfo = data.data;
-		console.log(data.data)
-		$scope.profileImage = $scope.userInfo.profilePic;
-
+		
 	});
+
+	dashboardFactory.getPhoto().then(function(data){
+		$scope.profileImage = data.data;
+	})
 
     //user edits his/her profile from the dashboard
 	$scope.editProfile = function(tag, iconId, dbedit) {
@@ -60,13 +62,13 @@ angular.module('Coffeechat.dashboard', [])
     				profilePic: 'profilePic',
     				file: data
     			}
-    		dashboardFactory.postPhoto(dataObj).then(function(){
+    		dashboardFactory.postPhoto(dataObj).then(function(data){
+    			console.log(data.data)
     			$state.reload();
     		});
    		}
   		reader.readAsDataURL(file);
 	
 	}
-
 })
 
